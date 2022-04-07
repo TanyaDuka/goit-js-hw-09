@@ -22,10 +22,19 @@ refs.btnStart.disabled = true;
 refs.btnStart.addEventListener('click', onClickStart);
 
 function onClickStart() {
-    setInterval(() => { render(convertMs(dreamDate - Date.now()))}, 1000);
-    refs.btnStart.disabled = true;
+    const interval = setInterval(() => {
 
-  refs.input.disabled = true;
+        if (Date.now() <= Date.parse(dreamDate)) {
+            render(convertMs(dreamDate - Date.now()));
+            refs.btnStart.disabled = true;
+
+  refs.input.disabled =true;
+        }else{refs.btnStart.disabled = false;
+
+  refs.input.disabled =false;}
+     
+    }, 1000);
+   
 }
 
 const options = {
